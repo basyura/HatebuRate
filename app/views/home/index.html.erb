@@ -1,0 +1,17 @@
+<h1>Home#index</h1>
+
+<table>
+  <% @items.each do |item| %>
+    <tr>
+      <td>
+        ↑
+      </td>
+      <td>
+        ↓
+      </td>
+      <td>
+        <span class="title"><a href="<%= item.link%>"><%= item.title %></a></span>
+      </td>
+    </tr>
+  <% end %>
+</table>
