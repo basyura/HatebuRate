@@ -1,5 +1,3 @@
-require 'open-uri'
-require 'rss'
 
 module HatebuRate
   class RSS
@@ -9,11 +7,3 @@ module HatebuRate
     end
   end
 end
-
-#if __FILE__ == $0
-  #HatebuRate::RSS.new.items.each do |item|
-    #puts item.title
-    #puts item.link
-    #puts ""
-  #end
-#end

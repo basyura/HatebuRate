@@ -1,10 +1,11 @@
 
 class RssItem
-  attr_reader :title, :link, :point, :surfaces
+  attr_reader :title, :url, :date, :point, :surfaces
   def initialize(item)
     @item     = item
     @title    = @item.title
-    @link     = @item.link
+    @url      = @item.url
+    @date     = @item.date
     @surfaces = HatebuRate::Mecab.new.parse(item.title)
     @point    = count(@surfaces)
   end
