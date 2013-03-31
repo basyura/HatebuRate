@@ -1,4 +1,4 @@
-<h1>Home#index</h1>
+<h1>はてブらんく</h1>
 
 <table>
   <% @items.each do |item| %>
@@ -10,10 +10,14 @@
         <%= link_to 'down', :action => 'down', :method => 'post', :remote => true, "data-type" => "html", :class => 'down', :title => item.title %>
       </td>
       <td>
-        <span class="title"><a href="<%= item.link%>"><%= item.title %></a></span>
+        <%= item.point %>
+      </td>
+      <td>
+        <span class="title"><a href="<%= item.link%>" target="_blank" ><%= item.title %></a></span>
       </td>
     </tr>
     <tr>
+      <td></td>
       <td></td>
       <td></td>
       <td><%= item.surfaces.join(' , ') %></td>
