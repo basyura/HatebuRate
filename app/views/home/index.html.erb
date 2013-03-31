@@ -4,14 +4,19 @@
   <% @items.each do |item| %>
     <tr>
       <td>
-        ↑
+        <%= link_to 'up', :action => 'up', :method => 'post', :remote => true, "data-type" => "html", :class => 'up', :title => item.title %>
       </td>
       <td>
-        ↓
+        down
       </td>
       <td>
         <span class="title"><a href="<%= item.link%>"><%= item.title %></a></span>
       </td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td><%= item.surfaces.join(' , ') %></td>
     </tr>
   <% end %>
 </table>
