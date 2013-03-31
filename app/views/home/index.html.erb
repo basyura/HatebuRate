@@ -7,7 +7,7 @@
         <%= link_to 'up', :action => 'up', :method => 'post', :remote => true, "data-type" => "html", :class => 'up', :title => item.title %>
       </td>
       <td>
-        down
+        <%= link_to 'down', :action => 'down', :method => 'post', :remote => true, "data-type" => "html", :class => 'down', :title => item.title %>
       </td>
       <td>
         <span class="title"><a href="<%= item.link%>"><%= item.title %></a></span>
