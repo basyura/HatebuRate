@@ -12,7 +12,7 @@ module Tasks
         feed = Feed.new(:title => item.title, :url => item.link, :date => item.date )
         if item.date > date
           feed.save 
-          puts item
+          puts item.title
         end
       end
 
