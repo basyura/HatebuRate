@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  feed: 
+  point: 1
+  done: false
+
+two:
+  feed: 
+  point: 1
+  done: false
