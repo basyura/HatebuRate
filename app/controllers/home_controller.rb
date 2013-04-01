@@ -4,7 +4,7 @@ require 'hateburate-mecab'
 class HomeController < ApplicationController
   RSS_HATEBU_NEWS = 'http://b.hatena.ne.jp/entrylist?sort=hot&threshold=3&mode=rss'
   def index
-    @items = Feed.all.map.each{|item| RssItem.new(item) }.select{|item| item.point >= -10}
+    @items = Feed.all.map.each{|item| RssItem.new(item) }.select{|item| item.point >= -10}.reverse
   end
 
   def up
