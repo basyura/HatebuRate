@@ -1,5 +1,7 @@
 == README
 
+proto
+
 ## TODO
 
   - crawl しあとに point を計算する => Feed に point 列追加
