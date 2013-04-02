@@ -10,11 +10,9 @@ module Tasks
 
       items = HatebuRate::RSS.new.items
       items.each do |item|
-        feed = Feed.new(:title => item.title, :url => item.link, :date => item.date )
-        if item.date <= date
-          next
-        end
+        break if item.date <= date
 
+        feed = Feed.new(:title => item.title, :url => item.link, :date => item.date )
         feed.save 
         puts item.title
         
