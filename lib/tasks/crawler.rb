@@ -3,7 +3,7 @@ require './lib/assets/hateburate-mecab'
 
 module Tasks
   class Crawler
-    NEWS_URI = 'http://b.hatena.ne.jp/entrylist?sort=hot&threshold=3&mode=rss'
+    NEWS_URI = 'http://b.hatena.ne.jp/entrylist?sort=hot&threshold=1&mode=rss'
     def self.execute
       status = CrawlStatus.all.first
       date = status ? status.date : Time.local(2013,1,1)
