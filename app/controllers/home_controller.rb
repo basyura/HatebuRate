@@ -4,7 +4,12 @@ require 'hateburate-mecab'
 class HomeController < ApplicationController
   RSS_HATEBU_NEWS = 'http://b.hatena.ne.jp/entrylist?sort=hot&threshold=3&mode=rss'
   def index
-    @items = Catalog.where(:done => false).where("point >= ? ", -10).order("point desc, created_at").
+    @threshold = -10
+    begin
+      @threshold = params["threshold"].to_i if params.include? "threshold"
+    rescue
+    end
+    @items = Catalog.where(:done => false).where("point >= ? ", @threshold).order("point desc, created_at desc").
                      map.each{|catalog| RssItem.new(catalog) }
   end
 

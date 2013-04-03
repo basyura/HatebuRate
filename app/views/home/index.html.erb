@@ -1,20 +1,29 @@
 <h1>はてブらんく</h1>
 
 <div>
+  <div style="float:left">
   <%= form_tag :action => "done" do |f| %>
     <%= button_tag "既読にする" %>
     <%= hidden_field_tag "done_list", "#{@items.map{|item| item.id}.join(',')}" %>
   <% end %>
+  </div>
+  <div align="right" style="float:right">
+    <span>しきい値 : <%= @threshold %></span>
+  </div>
 </div>
 
-<% @items.each do |item| %>
-    <div id="<%= item.id %>" class="feed">
-      <%= item.point %>
-      <%= link_to 'up', :action => 'up', :method => 'post', :remote => true, "data-type" => "html", :class => 'up', :title => item.title, :id => item.id %>
-      <%= link_to 'down', :action => 'down', :method => 'post', :remote => true, "data-type" => "html", :class => 'down', :title => item.title, :id => item.id  %>
-      <span class="title"><a href="<%= item.url %>" target="_blank" ><%= item.title %></a> - <%= item.date %></span>
-      <div>
-        <%= item.surfaces.join(' , ') %>
-     </div>
-  </div>
-<% end %>
+<div style="clear:both">
+
+  <% @items.each do |item| %>
+      <div id="<%= item.id %>" class="feed">
+        <%= item.point %>
+        <%= link_to 'up', :action => 'up', :method => 'post', :remote => true, "data-type" => "html", :class => 'up', :title => item.title, :id => item.id %>
+        <%= link_to 'down', :action => 'down', :method => 'post', :remote => true, "data-type" => "html", :class => 'down', :title => item.title, :id => item.id  %>
+        <span class="title"><a href="<%= item.url %>" target="_blank" ><%= item.title %></a> - <%= item.date %></span>
+        <div style="margin-left:50px;">
+          <%= item.surfaces.join(' , ') %>
+       </div>
+    </div>
+  <% end %>
+
+</div>
