@@ -9,8 +9,10 @@ class HomeController < ApplicationController
       @threshold = params["threshold"].to_i if params.include? "threshold"
     rescue
     end
-    @items = Catalog.where(:done => false).where("point >= ? ", @threshold).order("point desc, created_at desc").limit(20).
-                     map.each{|catalog| RssItem.new(catalog) }
+    targets = Catalog.where(:done => false).where("point >= ? ", @threshold)
+
+    @items = targets.order("point desc, created_at desc").limit(5).map.each{|catalog| RssItem.new(catalog) }
+    @count = targets.count
   end
 
   def up

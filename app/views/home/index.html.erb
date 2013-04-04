@@ -8,7 +8,7 @@
   <% end %>
   </div>
   <div align="right" style="float:right">
-    <span>しきい値 : <%= @threshold %></span>
+    <span><%= @items.length %> / <%= @count %>,   threshold : <%= @threshold %></span>
   </div>
 </div>
 
@@ -20,7 +20,7 @@
         <%= link_to 'up', :action => 'up', :method => 'post', :remote => true, "data-type" => "html", :class => 'up', :title => item.title, :id => item.id %>
         <%= link_to 'down', :action => 'down', :method => 'post', :remote => true, "data-type" => "html", :class => 'down', :title => item.title, :id => item.id  %>
         <span class="title"><a href="<%= item.url %>" target="_blank" ><%= item.title %></a> - <%= item.date %></span>
-        <div style="margin-left:50px;">
+        <div style="margin-left:50px;color:gray;">
           <%= item.surfaces.join(' , ') %>
        </div>
     </div>
