@@ -1,18 +1,12 @@
 <h1>はてブらんく</h1>
 
 <div>
-  <div style="float:left">
-  <%= form_tag :action => "done" do |f| %>
-    <%= button_tag "既読にする" %>
-    <%= hidden_field_tag "done_list", "#{@items.map{|item| item.id}.join(',')}" %>
-  <% end %>
-  </div>
   <div align="right" style="float:right">
     <span><%= @items.length %> / <%= @count %>,   threshold : <%= @threshold %></span>
   </div>
 </div>
 
-<div style="clear:both">
+<div style="clear:both;padding-top:10px">
 
   <% @items.each do |item| %>
       <div id="<%= item.id %>" class="feed">
@@ -26,4 +20,12 @@
     </div>
   <% end %>
 
+</div>
+
+
+<div style="padding-top:10px">
+  <%= form_tag :action => "done" do |f| %>
+    <%= button_tag "既読にする", :style => "width:140px;height:50px;" %>
+    <%= hidden_field_tag "done_list", "#{@items.map{|item| item.id}.join(',')}" %>
+  <% end %>
 </div>
