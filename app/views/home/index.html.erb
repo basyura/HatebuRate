@@ -1,8 +1,7 @@
-<h1>はてブらんく</h1>
-
 <div>
   <div align="right" style="float:right">
-    <span><%= @items.length %> / <%= @count %>,   threshold : <%= @threshold %></span>
+    <span class="label label-info"><%= @items.length %> / <%= @count %></span>
+    <span class="label label-info">threshold : <%= @threshold %></span>
   </div>
 </div>
 
@@ -10,10 +9,15 @@
 
   <% @items.each do |item| %>
       <div id="<%= item.id %>" class="feed">
-        <%= item.point %>
-        <%= link_to image_tag('/images/up.gif', {:align => 'center'}), :action => 'up', :method => 'post', :remote => true, "data-type" => "html", :class => 'up', :title => item.title, :id => item.id %>
-        <%= link_to image_tag('/images/down.gif', {:align => 'center'}), :action => 'down', :method => 'post', :remote => true, "data-type" => "html", :class => 'down', :title => item.title, :id => item.id  %>
-        <span class="title"><a href="<%= item.url %>" target="_blank" ><%= item.title %></a> - <%= item.date %></span>
+        <span class="badge badge-important badge-large"><%= item.point %></span>
+
+        <%= link_to '', { action: 'up', method: 'post', remote: true, title: item.title, id: item.id, "data-type" => "html" },
+                        { class: 'icon-arrow-up icon-large btn btn-warning'} %>
+
+        <%= link_to '', { action: 'down', method: 'post', remote: true, title: item.title, id: item.id, "data-type" => "html"  },
+                        { class:  'icon-arrow-down icon-large btn btn'} %>
+
+        &nbsp;<span class="title"><a href="<%= item.url %>" target="_blank" ><%= item.title %></a> - <%= item.date.strftime("%Y/%m/%d") %></span>
         <div style="margin-left:50px;color:gray;">
           <%= item.surfaces.join(' , ') %>
        </div>
@@ -25,7 +29,7 @@
 
 <div style="padding-top:10px">
   <%= form_tag :action => "done" do |f| %>
-    <%= button_tag "既読にする", :style => "width:140px;height:50px;" %>
+    <%= button_tag "既読にする", :class => "btn btn-large btn-primary" %>
     <%= hidden_field_tag "done_list", "#{@items.map{|item| item.id}.join(',')}" %>
   <% end %>
 </div>
