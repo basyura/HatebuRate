@@ -36,6 +36,11 @@ class HomeController < ApplicationController
     redirect_to :root
   end
 
+  def done_all
+    Catalog.update_all(:done => true)
+    redirect_to :root
+  end
+
   private
   def rank(point, title)
     HatebuRate::Mecab.new.parse(title).each do |m|

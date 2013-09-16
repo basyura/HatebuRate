@@ -1,11 +1,11 @@
-<div>
+<div class='span12'>
   <div align="right" style="float:right">
     <span class="label label-info"><%= @items.length %> / <%= @count %></span>
     <span class="label label-info">threshold : <%= @threshold %></span>
   </div>
 </div>
 
-<div style="clear:both;padding-top:10px">
+<div class='span12'>
 
   <% @items.each do |item| %>
       <div id="<%= item.id %>" class="feed">
@@ -27,9 +27,18 @@
 </div>
 
 
-<div style="padding-top:10px">
+<div  class='span12'>
+  <p/>
+</div>
+
+<div class="span4">
   <%= form_tag :action => "done" do |f| %>
     <%= button_tag "既読にする", :class => "btn btn-large btn-primary" %>
     <%= hidden_field_tag "done_list", "#{@items.map{|item| item.id}.join(',')}" %>
+  <% end %>
+</div>
+<div class="span7" align="right">
+  <%= form_tag action: "done_all" do |f| %>
+    <%= button_tag "全て既読にする", class: "btn btn-large btn-danger", confirm: 'read all?'  %>
   <% end %>
 </div>
