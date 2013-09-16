@@ -34,7 +34,9 @@
     <!-- Size should be 32 x 32 pixels -->
     <%= favicon_link_tag 'favicon.ico', :rel => 'shortcut icon' %>
 
-    <%= javascript_include_tag "application" %>
+    <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+    <!-- head内に移動して変更 -->
+    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   </head>
   <body>
 
