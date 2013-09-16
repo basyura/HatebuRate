@@ -31,10 +31,15 @@
     <span>no entry</span>
   </div>
 <% else %>
-  <div class="span12" align="left">
+  <div class="span9" align="left">
     <%= form_tag :action => "done" do |f| %>
-      <%= button_tag "done", class: "btn btn-large btn-primary", style: 'width:120px' %>
+      <%= button_tag "done", class: "btn btn-large btn-primary", style: 'width:250px' %>
       <%= hidden_field_tag "done_list", "#{@items.map{|item| item.id}.join(',')}" %>
+    <% end %>
+  </div>
+  <div class="span2">
+    <%= form_tag action: "done_all" do |f| %>
+      <%= button_tag "done all", class: "btn btn-large btn-danger", style: 'width:250px', confirm: 'read all?'  %>
     <% end %>
   </div>
 <% end %>

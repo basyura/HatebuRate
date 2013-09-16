@@ -42,15 +42,12 @@
 
     <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
-        <div class='span4'>
+        <div class='span3'>
           <a class="brand" href="#">HatebuRate</a>
-          <div style="margin-top:10px">
+        </div>
+        <div class='span9' align="right" style="margin-top:10px"">
             <span class="label label-info"><%= @items.length %> / <%= @count %></span>
             <span class="label label-info">threshold : <%= @threshold %></span>
-          </div>
-        </div>
-        <div class='span8' align="right" style="margin-top:4px">
-            <%= link_to "all done", home_done_all_path, method: :post, remote: :true, class: 'btn btn-danger', confirm: 'all done?' %>
         </div>
       </div>
     </div>
