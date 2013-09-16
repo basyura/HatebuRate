@@ -31,14 +31,21 @@
   <p/>
 </div>
 
-<div class="span4">
-  <%= form_tag :action => "done" do |f| %>
-    <%= button_tag "既読にする", :class => "btn btn-large btn-primary" %>
-    <%= hidden_field_tag "done_list", "#{@items.map{|item| item.id}.join(',')}" %>
-  <% end %>
-</div>
-<div class="span7" align="right">
-  <%= form_tag action: "done_all" do |f| %>
-    <%= button_tag "全て既読にする", class: "btn btn-large btn-danger", confirm: 'read all?'  %>
-  <% end %>
-</div>
+<% if @items.empty? %>
+  <div class="alert alert-block span10">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <span>no entry</span>
+  </div>
+<% else %>
+  <div class="span4">
+    <%= form_tag :action => "done" do |f| %>
+      <%= button_tag "既読にする", :class => "btn btn-large btn-primary" %>
+      <%= hidden_field_tag "done_list", "#{@items.map{|item| item.id}.join(',')}" %>
+    <% end %>
+  </div>
+  <div class="span7" align="right">
+    <%= form_tag action: "done_all" do |f| %>
+      <%= button_tag "全て既読にする", class: "btn btn-large btn-danger", confirm: 'read all?'  %>
+    <% end %>
+  </div>
+<% end %>
