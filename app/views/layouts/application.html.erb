@@ -40,13 +40,12 @@
 
     <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
-        <div class="container">
-          <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
+        <div class='span3'>
           <a class="brand" href="#">HatebuRate</a>
+        </div>
+        <div class='span9' align="right" style="margin-top:10px"">
+            <span class="label label-info"><%= @items.length %> / <%= @count %></span>
+            <span class="label label-info">threshold : <%= @threshold %></span>
         </div>
       </div>
     </div>
