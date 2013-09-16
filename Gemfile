@@ -48,3 +48,4 @@ end
 # gem 'debugger', group: [:development, :test]
 #
 gem 'mecab-light', '0.2.0'
+gem 'thin'
