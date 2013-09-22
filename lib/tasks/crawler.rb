@@ -1,12 +1,15 @@
 require './lib/assets/hateburate-rss'
 require './lib/assets/hateburate-mecab'
+require './lib/assets/hateburate-instapaper'
 
 module Tasks
   class Crawler
     NEWS_URI = 'http://b.hatena.ne.jp/entrylist?sort=hot&threshold=3&mode=rss'
     def self.execute
+
       status = CrawlStatus.all.first
       date = status ? status.date : Time.local(2013,1,1)
+      instapaper = HatebuRate::Instapaper.new
 
       items = HatebuRate::RSS.new.items
       items.each do |item|
@@ -14,9 +17,14 @@ module Tasks
 
         feed = Feed.new(:title => item.title, :url => item.link, :date => item.date )
         feed.save 
-        puts item.title
-        
+
         point = count(HatebuRate::Mecab.new.parse(item.title))
+        puts point.to_s + ' - ' + item.title
+
+        print 'send to instapaper ... '
+        instapaper.add(point, item.link)
+        puts 'end'
+
         catalog = Catalog.new(:point => point, :done => false)
         catalog.feed = feed
         catalog.save
