@@ -3,7 +3,7 @@
 
   <% @items.each do |item| %>
       <div id="<%= item.id %>">
-        <span class="badge badge-important badge-large"><%= item.point %></span>
+        <span class="badge badge-large <%= item.badge %>"><%= item.point %></span>
 
         <%= link_to '', { action: 'up', method: 'post', remote: true, title: item.title, id: item.id, "data-type" => "html" },
                         { class: 'icon-arrow-up icon-large btn btn-warning'} %>

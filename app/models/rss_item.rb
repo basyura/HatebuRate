@@ -15,4 +15,20 @@ class RssItem
   def sended?
     @sended
   end
+
+  def badge
+    if @point > 5
+      return 'badge-important'
+    end
+
+    if @point >= 0
+      return 'badge-success'
+    end
+
+    if @point < -5
+      return 'badge-inverse'
+    end
+
+    return 'badge-default'
+  end
 end
