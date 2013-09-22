@@ -11,6 +11,10 @@
         <%= link_to '', { action: 'down', method: 'post', remote: true, title: item.title, id: item.id, "data-type" => "html"  },
                         { class:  'icon-arrow-down icon-large btn btn'} %>
 
+        <% if item.sended? %>
+          &nbsp;<span class='icon-book'></span>
+        <% end %>
+
         &nbsp;<span class="title"><a href="<%= item.url %>" target="_blank" ><%= item.title %></a> - <%= item.date.strftime("%Y/%m/%d") %></span>
         <div style="margin-left:50px;color:gray;">
           <%= item.surfaces.join(' , ') %>

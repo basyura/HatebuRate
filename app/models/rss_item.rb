@@ -9,5 +9,10 @@ class RssItem
     @date     = @catalog.feed.date
     @surfaces = HatebuRate::Mecab.new.parse(@catalog.feed.title)
     @point    = @catalog.point
+    @sended   = @catalog.sended
+  end
+
+  def sended?
+    @sended
   end
 end

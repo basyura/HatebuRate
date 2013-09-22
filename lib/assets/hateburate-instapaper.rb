@@ -21,13 +21,13 @@ module HatebuRate
 
       https = Net::HTTP.new('instapaper.com', '443')
       https.use_ssl = true
-      https.start do |https|
+      res = https.start do |https|
         req = Net::HTTP::Post.new('https://www.instapaper.com/api/add')
         req.basic_auth @config['username'], @config['password']
         req.body =  "url=" + url
         res = https.request(req)
-        res
       end
+      res.code == 201
     end
   end
 end

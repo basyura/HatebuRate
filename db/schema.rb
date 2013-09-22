@@ -11,15 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130401120754) do
+ActiveRecord::Schema.define(version: 20130922010926) do
 
-  create_table "catalogs", force: true do |t|
-    t.integer  "feed_id"
-    t.integer  "point"
-    t.boolean  "done"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+# Could not dump table "catalogs" because of following NoMethodError
+#   undefined method `[]' for nil:NilClass
 
   create_table "crawl_statuses", force: true do |t|
     t.datetime "date"

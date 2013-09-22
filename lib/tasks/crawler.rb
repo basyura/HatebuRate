@@ -21,11 +21,10 @@ module Tasks
         point = count(HatebuRate::Mecab.new.parse(item.title))
         puts point.to_s + ' - ' + item.title
 
-        print 'send to instapaper ... '
-        instapaper.add(point, item.link)
-        puts 'end'
+        sended = instapaper.add(point, item.link)
+        puts 'send to instapaper ... ' if sended
 
-        catalog = Catalog.new(:point => point, :done => false)
+        catalog = Catalog.new(point: point, done: false, sended: sended)
         catalog.feed = feed
         catalog.save
       end
