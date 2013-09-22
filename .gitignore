@@ -21,3 +21,4 @@ vendor/bundle
 .DS_Store
 
 instapaper.yml
+start_rails.sh
