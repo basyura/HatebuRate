@@ -17,7 +17,7 @@ module HatebuRate
     #
     def add(point, url)
 
-      return if point < @config['threshold'].to_i
+      return false if point < @config['threshold'].to_i
 
       https = Net::HTTP.new('instapaper.com', '443')
       https.use_ssl = true
@@ -27,7 +27,7 @@ module HatebuRate
         req.body =  "url=" + url
         res = https.request(req)
       end
-      res.code == 201
+      res.code.to_i == 201
     end
   end
 end
